@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journalist Ravinder Singh Suryavanshi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #1a237e;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 10px 0;
+      background-color: rgba(26, 35, 126, 0.95);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #e8eaf6;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .navbar-brand {
+      font-size: 22px;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 0;
+      background-color: #e8eaf6;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(30px);
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 4px solid white;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .sanskrit-quote {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      text-align: center;
+      font-style: italic;
+      font-size: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sanskrit-quote::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      20% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    /* Animated section */
+    .animated-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .animated-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Newspaper section */
+    .newspaper {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .newspaper:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .newspaper h2 {
+      color: #1a237e;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .newspaper h2::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #1a237e;
+      transition: width 0.5s ease;
+    }
+
+    .newspaper:hover h2::after {
+      width: 100%;
+    }
+
+    .newspaper img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 4px;
+      transition: transform 0.5s ease;
+    }
+
+    .newspaper:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Book section */
+    .book {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .book:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .book img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.5s ease;
+    }
+
+    .book:hover img {
+      transform: rotate(3deg) scale(1.05);
+    }
+
+    .book button {
+      background-color: #1a237e;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: all 0.5s ease;
+    }
+
+    .book button:hover {
+      background-color: #303f9f;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .book button:hover::before {
+      left: 100%;
+    }
+
+    /* Bio section */
+    .bio {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .bio:hover {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .bio h2 {
+      color: #1a237e;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bio h2::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #1a237e;
+      transition: width 0.5s ease;
+    }
+
+    .bio:hover h2::after {
+      width: 100%;
+    }
+
+    .bio p {
+      text-align: justify;
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 15px;
+      border-left: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .bio p:hover {
+      border-left-color: #1a237e;
+      padding-left: 20px;
+    }
+
+    /* Social media */
+    .social-media {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .social-media a {
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .social-media a:hover {
+      transform: translateY(-10px) rotate(10deg);
+    }
+
+    .social-media img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .social-media:hover img {
+      filter: brightness(1.1);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a237e;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #2196f3, #03a9f4, #00bcd4, #009688, #4caf50, #8bc34a, #cddc39, #ffeb3b, #ffc107, #ff9800, #ff5722);
+      background-size: 200% 100%;
+      animation: rainbow 5s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* Responsive design */
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .navbar-brand {
+        font-size: 18px;
+      }
+      
+      .hero {
+        padding: 20px 10px;
+      }
+
+      .hero-image {
+        width: 150px;
+        height: 150px;
+      }
+
+      .sanskrit-quote {
+        font-size: 16px;
+      }
+      
+      .newspaper h2, .bio h2 {
+        font-size: 20px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .container {
+        width: 95%;
+      }
+      
+      .hero-image {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .book button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .social-media img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    /* Floating elements animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Typing animation for headings */
+    .typewriter h2 {
+      overflow: hidden;
+      border-right: .15em solid #1a237e;
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #1a237e; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="navbar-brand">Journalist Ravinder Singh Suryavanshi</a>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="hero">
+      <img src="imag.jpg" alt="Ravinder Singh Suryavanshi" class="hero-image animate__animated animate__fadeIn">
+      <div class="sanskrit-quote animate__animated animate__fadeIn animate__delay-1s">
+        <p>आनृशंस्यमनुक्रोशः श्रुतं शीलं दमः शमः। <br />
+          राघवं शोभयन्त्येते षड्गुणाः पुरुषोत्तमम्॥</p>
+      </div>
+    </section>
+
+    <section class="newspaper animated-section">
+      <div class="typewriter">
+        <h2>दोपहर के सामना मुंबई में छपी समीक्षा</h2>
+      </div>
+      <img src="news.jpg" alt="Newspaper featuring Ravinder Singh" class="floating">
+    </section>
+
+    <section class="book animated-section">
+      <img src="book.jpg" alt="Book cover - IFFCO Kiski" class="animate__animated animate__fadeInUp animate__delay-1s">
+      <button onclick="window.open('iffco kiski book.pdf')" class="animate__animated animate__pulse animate__infinite animate__slower">Download Book</button>
+    </section>
+
+    <section class="bio animated-section">
+      <h2>संक्षिप्त आत्म परिचय</h2>
+      <p class="animate__animated animate__fadeInLeft animate__delay-1s">रविंद्र सिंह सूर्यवंशी पुत्र श्री रामनाथ सिंह सूर्यवंशी उम्र 45 वर्ष गांव व्योधा, पोस्ट शेरगढ़, जिला बरेली पत्रकार-लेखक, "लेखक का गोत्र इच्छबाकू है तथा भगवान श्री राम के वंशज हैं, श्री राम की मर्यादा और आदर्श के मार्ग को अपनाते हुए पत्रकारिता की नई विधा की शुरुआत की है."</p>
+      
+      <p class="animate__animated animate__fadeInLeft animate__delay-2s"><strong>संक्षिप्त कार्य विवरण :</strong><br>
+      खोजी पत्रकारिता, समाज में व्याप्त भ्रष्टाचार पर पत्रकारिता के द्वारा भ्रष्ट तंत्र की कारगुजारियों के तथ्यपूर्ण अन्वेषण करना विश्व स्तर की सर्वोच्च भारतीय किसानों की सहकारी संस्था में व्याप्त भयानक भ्रष्टाचार, अनियमित्ताओं एवं विधि विरुद्ध भ्रष्ट प्रबंधन तंत्र द्वारा इफको पर सहकारिता माफिया डॉ यू एस अवस्थी और उनके गिरोह द्वारा अवैध कब्ज़ा कर अरवों की संपत्ति अर्जित करना, विदेशों में भ्रष्टाचार से अर्जित अकूत धन जमा करना, लेखक द्वारा अन्वेषण कर अमेरिका के वाटरगेट, और भारत के कोलगेट, 2G घोटाले से बड़े इफको घोटाले पार "इफको किसकी" शीर्षक से प्रकाशित पुस्तक में तथ्यपूर्ण प्रयास के साथ भ्रष्टाचार का खुलासा करना।</p>
+      
+      <p class="animate__animated animate__fadeInLeft animate__delay-3s">लेखक की पुस्तक "इफको किसकी" की 31 सीरीज़ में देश की प्रसिद्ध बेवसाइट भड़ास मिडिया ने प्रकाशन किया है। इफको और सरकारी तंत्र की सांठ-गांठ और भ्रष्टाचार तथा सरकार के मंत्रियों, वरिष्ठ आईएएस लाबी और अन्वेषण करने वाली एजेंसी द्वारा अपने पुत्र-पुत्री को उच्च पदों पर इफको में नौकरी दिलाने का भी खुलासा किया गया है।</p>
+      
+      <p class="animate__animated animate__fadeInLeft animate__delay-4s">लेखक की इस पुस्तक में दिए गए प्रमाणों तथ्यों पर सरकार के ध्यान न देने पर माननीय सर्वोच्च न्यायलय में रिट पिटीशन सिविल 101 /2019 रविंद्र सिंह वनाम यूनियन ऑफ इंडिया दिनांकित 8 फरवरी 2019, यूनियन ऑफ इंडिया सीबीआई को आदेश निर्गत किये परिणाम स्वरुप सीबीआई ने जाँच उपरांत एफआईआर बुक न.790, दिनांक 17. 5. 2021 दर्ज़ की। जिसके विरुद्ध उच्च न्यायलय दिल्ली में गिरफ़्तारी से बचने के लिए स्टे ले लिया जो आज भी लंबित है। इधर सीबाईआई ईडी भी कुछ नहीं कर पा रही है।</p>
+      
+      <p class="animate__animated animate__fadeInLeft animate__delay-5s">लेखक ने इफको में भ्रष्टाचार की तह तक पहुंचने का प्रयास किया है की इफको प्रबंध निदेशक बनने के लिए यू एस अवस्थी ने किन-किन उपकरणों का उपयोग किया है। उन्होंने 1 फरवरी 1993 में कांग्रेस सरकार में प्रबंध निदेशक की कुर्सी हथिया ली डॉ अवस्थी ने भ्रष्टाचार के तमाम आयामों को पीछे छोड़ते हुए 2500 करोड़ की धनराशि से इफको संयंत्रों के विस्तारीकरण में कमीशन के रूप में सैकड़ों करोड़ खाए और अपने कांग्रेसी आकाओं को भी खिलाए। सन 1997 में अवस्थी और इनके 8 सहयोगी के यहाँ आईटी की रेड हुई गुरु अवस्थी को राकेश कपूर ने पहले ही खबर दे दी। जिससे उन्होंने अमेरिकी डालर हटा दिए लेकिन सहयोगी इंद्रजीत ओहरी के घर लाखों के डालर पकडे गए वे कहां गए राकेश कपूर जानते हैं इसके बाद राकेश कपूर को इफको में संयुक्त प्रबंध निदेशक बना दिया गया और वे आज भी अपने पद पर विराजमान हैं अमेरिका में वाटरगेट घोटाला में वहां के राष्ट्रपति को अपना पद छोड़ना पड़ा परन्तु भारत में इतने बड़े घोटाले में फंसने के बाद भी यू एस अवस्थी अपने पद पर बने हुए हैं?</p>
+    </section>
+
+    <div class="social-media animated-section">
+      <a href="https://x.com/MediaRavinder?t=Mt8Lq6P9Bu763mUsPTmQFA&s=09" target="_blank" class="animate__animated animate__tada animate__delay-1s">
+        <img src="twitter.webp" alt="Twitter">
+      </a>
+      <a href="mailto:Journalist.ravinder@gmail.com" target="_blank" class="animate__animated animate__tada animate__delay-2s">
+        <img src="unnamed.webp" alt="Email">
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p class="animate__animated animate__fadeIn animate__delay-1s">&copy; 2025 Journalist Ravinder Singh Suryavanshi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar animation on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Reveal animations on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedSections = document.querySelectorAll('.animated-section');
+      
+      function checkIfInView() {
+        animatedSections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (sectionTop < windowHeight - 100) {
+            section.classList.add('visible');
+          }
+        });
+      }
+      
+      // Initial check
+      checkIfInView();
+      
+      // Check on scroll
+      window.addEventListener('scroll', checkIfInView);
+    });
+
+    // Mobile menu toggle functionality
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      // Add mobile menu functionality here
+      alert('Mobile menu toggled!');
+    });
+  </script>
+</body>
+</html>
